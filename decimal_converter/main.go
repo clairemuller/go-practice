@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 func findPower(num float64, base float64) float64 {
@@ -21,7 +22,6 @@ func toBinary(num float64) int {
 	var binarySlice []int
 	firstLoop := true
 	var power = findPower(num, 2)
-	n := num
 
 	for num >= 0 && power >= 0 {
 		// if on the first loop or num is greater/equal to 2^power
@@ -37,7 +37,13 @@ func toBinary(num float64) int {
 		}
 		power--
 	}
-	fmt.Printf("%v in binary is %v\n", n, binarySlice)
+	// convert slice of numbers into a string
+	// then convert string to an int
+	var binaryString string
+	for i := 0; i < len(binarySlice); i++ {
+		binaryString += strconv.Itoa(binarySlice[i])
+	}
+	binaryNum, _ = strconv.Atoi(binaryString)
 	return binaryNum
 }
 
