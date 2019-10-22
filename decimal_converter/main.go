@@ -14,11 +14,10 @@ func findPower(num float64, base float64) float64 {
 	return (power - 1)
 }
 
-func toBinary(num float64) int {
+func toBinary(num float64) string {
 	if num == 0 {
-		return 0
+		return "0"
 	}
-	var binaryNum int
 	var binarySlice []int
 	firstLoop := true
 	var power = findPower(num, 2)
@@ -38,13 +37,11 @@ func toBinary(num float64) int {
 		power--
 	}
 	// convert slice of numbers into a string
-	// then convert string to an int
 	var binaryString string
 	for i := 0; i < len(binarySlice); i++ {
 		binaryString += strconv.Itoa(binarySlice[i])
 	}
-	binaryNum, _ = strconv.Atoi(binaryString)
-	return binaryNum
+	return binaryString
 }
 
 func toHex(num int) int {
@@ -52,7 +49,7 @@ func toHex(num int) int {
 }
 
 func main() {
-	var num float64 = 8
+	var num float64 = 9
 	fmt.Println(toBinary(num))
 
 	// fmt.Printf("%v converted to binary is %v\n", num, toBinary(num))
