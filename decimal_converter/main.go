@@ -14,7 +14,11 @@ func findPower(num float64, base float64) float64 {
 	return (power - 1)
 }
 
-func toBinary(num float64) string {
+func FormatBinary(num float64) string {
+	// check that num is greater than zero and not a decimal
+	if num < 0 || num != math.Trunc(num) {
+		return "Whole numbers only!"
+	}
 	if num == 0 {
 		return "0"
 	}
@@ -50,8 +54,8 @@ func toHex(num int) int {
 
 func main() {
 	var num float64 = 9
-	fmt.Println(toBinary(num))
+	fmt.Println(FormatBinary(num))
 
-	// fmt.Printf("%v converted to binary is %v\n", num, toBinary(num))
+	// fmt.Printf("%v converted to binary is %v\n", num, FormatBinary(num))
 	// fmt.Printf("%v converted to hexadecimal is %v\n", num, toHex(num))
 }
